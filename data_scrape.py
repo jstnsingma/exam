@@ -15,8 +15,6 @@ class DataScrape:
         else:
             response_content = BeautifulSoup(response, 'html.parser')
             response_content = str(response_content.prettify())
-            with open("file.txt", "w") as f:
-                f.write(response_content)
             return response_content
 
     def parse_team_page(self, content):
