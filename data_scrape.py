@@ -15,14 +15,12 @@ class DataScrape:
         else:
             response_content = BeautifulSoup(response, 'html.parser')
             response_content = str(response_content.prettify())
-            with open("file.txt", "w") as f:
-                f.write(response_content)
             return response_content
 
     def parse_team_page(self, content):
         team_dict = []
-
         urls = re.findall(r'<div class="col-lg-12 team-page-img">\n\s+<center>\n\s+<a href="(.*?)">.*?</div>', content, flags=re.DOTALL)
+
         for url in urls:
             url_content = self.get_content(url)
 
